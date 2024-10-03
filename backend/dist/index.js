@@ -26,9 +26,12 @@ const PORT = process.env.PORT || 5000;
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 // MongoDB connection
-mongoose_1.default.connect(process.env.MONGODB_URI || '', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+mongoose_1.default.connect(process.env.MONGODB_URI || '')
+    .then(() => {
+    console.log('MongoDB connected successfully');
+})
+    .catch(err => {
+    console.error('MongoDB connection error:', err);
 });
 // Login route
 app.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

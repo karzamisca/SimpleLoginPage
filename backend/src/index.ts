@@ -1,6 +1,6 @@
 // src/index.ts
 import express from 'express';
-import mongoose, {ConnectOptions} from 'mongoose';
+import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -16,10 +16,13 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || '', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-} as ConnectOptions);
+mongoose.connect(process.env.MONGODB_URI || '')
+    .then(() => {
+        console.log('MongoDB connected successfully');
+    })
+    .catch(err => {
+        console.error('MongoDB connection error:', err);
+    });
 
 // Login route
 app.post('/login', async (req, res) => {
