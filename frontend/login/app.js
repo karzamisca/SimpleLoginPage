@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// frontend/app.ts
+// frontend/login/app.ts
 const loginForm = document.getElementById('loginForm');
 const messageElement = document.getElementById('message');
 loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0, function* () {
@@ -25,7 +25,7 @@ loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0
     const data = yield response.json();
     if (response.status === 200) {
         // Redirect to the placeholder page on successful login
-        window.location.href = 'placeholder.html';
+        window.location.href = '../placeholder/index.html';
     }
     else {
         // Show error message

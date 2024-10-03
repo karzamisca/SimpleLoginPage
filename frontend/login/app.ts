@@ -1,4 +1,4 @@
-// frontend/app.ts
+// frontend/login/app.ts
 const loginForm = document.getElementById('loginForm') as HTMLFormElement;
 const messageElement = document.getElementById('message') as HTMLElement;
 
@@ -20,7 +20,7 @@ loginForm.addEventListener('submit', async (event) => {
 
     if (response.status === 200) {
         // Redirect to the placeholder page on successful login
-        window.location.href = 'placeholder.html';
+        window.location.href = '../placeholder/index.html';
     } else {
         // Show error message
         messageElement.textContent = data.message;
