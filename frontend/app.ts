@@ -17,5 +17,12 @@ loginForm.addEventListener('submit', async (event) => {
     });
 
     const data = await response.json();
-    messageElement.textContent = data.message;
+
+    if (response.status === 200) {
+        // Redirect to the placeholder page on successful login
+        window.location.href = 'placeholder.html';
+    } else {
+        // Show error message
+        messageElement.textContent = data.message;
+    }
 });

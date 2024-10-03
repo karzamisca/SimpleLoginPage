@@ -23,5 +23,12 @@ loginForm.addEventListener('submit', (event) => __awaiter(void 0, void 0, void 0
         body: JSON.stringify({ username, password }),
     });
     const data = yield response.json();
-    messageElement.textContent = data.message;
+    if (response.status === 200) {
+        // Redirect to the placeholder page on successful login
+        window.location.href = 'placeholder.html';
+    }
+    else {
+        // Show error message
+        messageElement.textContent = data.message;
+    }
 }));
